@@ -35,7 +35,7 @@ const handler = async (m, {conn, text}) => {
         stickerMakerSourceType: null
       };
       
-      stiker = await addExif(img, packname || global.packname || 'Bot', author || global.author || 'TheMystic', categories, metadata);
+      stiker = await addExif(img, packname || global.packname || 'Bot', author || global.author || 'SunJimWoo', categories, metadata);
     } catch (exifError) {
       console.log('❌ Error en addExif:', exifError.message);
       stiker = img;

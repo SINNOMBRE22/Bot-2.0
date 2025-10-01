@@ -1,5 +1,4 @@
-/* Desarrollado y Creado por: https://github.com/BrunoSobrino */
-
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
 const handler = async (m, {conn, usedPrefix, command}) => {
  const datas = global
  const idioma = datas.db.data.users[m.sender].language || global.defaultLenguaje

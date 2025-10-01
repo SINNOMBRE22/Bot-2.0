@@ -1,0 +1,38 @@
+// Plugin para responder con nota de voz y miniatura
+const handler = (m) => m;
+
+handler.all = async function(m) {
+  const chat = global.db.data.chats[m.chat];
+
+  if (/^bot$/i.test(m.text) && !chat.isBanned) {
+    try {
+      // Indicar que el bot está "grabando"
+      m.conn.sendPresenceUpdate('recording', m.chat);
+      await m.reply('*Hola, ¿Cómo puedo ayudarte?*');
+
+      // Usar tu método de audio como nota de voz con miniatura
+      await m.conn.sendMessage(
+        m.chat,
+        {
+          audio: { url: './media/creador.mp3' }, // Ruta local de tu audio
+          mimetype: 'audio/mpeg',
+          ptt: true, // Lo hace nota de voz
+          contextInfo: {
+            externalAdReply: {
+              title: 'Creador',
+              body: 'SinNombre 🔥',
+              thumbnailUrl: 'https://tinyurl.com/SinNombre23'
+            }
+          }
+        },
+        { quoted: m }
+      );
+
+    } catch (error) {
+      console.error('Error enviando audio como nota de voz:', error);
+    }
+  }
+  return !0;
+};
+
+export default handler;

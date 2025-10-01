@@ -24,10 +24,10 @@ try {
  // ----- Opciones de lenguaje
  if (sigla === 'es') {
  global.db.data.users[m.sender].language = 'es'
- m.reply(`*[ ✅ ] The Mystic - Bot*\n\n*—◉* *_Idioma definido a Español 🇪🇸_*`)
+ m.reply(`*[ ✅ ] The Sun Jim-Woo - Bot*\n\n*—◉* *_Idioma definido a Español 🇪🇸_*`)
  } else if (sigla === 'en') {
  global.db.data.users[m.sender].language = 'en'
- m.reply(`*[ ✅ ] The Mystic - Bot*\n\n*—◉* *_Idioma definido a Inglês 🇬🇧_*`)
+ m.reply(`*[ ✅ ] The Sun Jim-Woo - Bot*\n\n*—◉* *_Idioma definido a Inglês 🇬🇧_*`)
  } else {
  m.reply(`${tradutor.texto1[2]}\n${tradutor.texto1[3]} *( ${data.db.data.users[m.sender].language} )*\n${tradutor.texto1[0]}\n*${usedPrefix}lang* es\n\n${tradutor.texto1[1]}`)
  }

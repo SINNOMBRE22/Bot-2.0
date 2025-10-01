@@ -1,17 +1,50 @@
 import fs from 'fs';
+import path from 'path';
+import { exec } from 'child_process';
+
 const handler = (m) => m;
+
 handler.all = async function(m) {
-  const vn = './src/assets/audio/01J67301CY64MEGCXYP1NRFPF1.mp3';
   const chat = global.db.data.chats[m.chat];
   if (/^bot$/i.test(m.text) && !chat.isBanned) {
-    m.conn.sendPresenceUpdate('recording', m.chat);
-    await m.reply(`*Hola, ¿Cómo puedo ayudarte?*`);
-    m.conn.sendMessage(m.chat, {audio: {url: vn}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
+    try {
+      m.conn.sendPresenceUpdate('recording', m.chat);
+      await m.reply('*Hola, ¿Cómo puedo ayudarte?*');
+
+      const mp3Path = path.resolve('src/assets/audio/01J67301CY64MEGCXYP1NRFPF1.mp3');
+      const oggPath = path.resolve('src/assets/audio/temp.ogg');
+
+      // Convertir MP3 a OGG/OPUS usando ffmpeg
+      await new Promise((resolve, reject) => {
+        exec(`ffmpeg -y -i "${mp3Path}" -c:a libopus "${oggPath}"`, (error) => {
+          if (error) reject(error);
+          else resolve();
+        });
+      });
+
+      // Leer el OGG resultante
+      const audioBuffer = fs.readFileSync(oggPath);
+
+      // Enviar como nota de voz sin miniatura
+      await m.conn.sendMessage(
+        m.chat,
+        {
+          audio: audioBuffer,
+          mimetype: 'audio/ogg; codecs=opus',
+          ptt: true
+        },
+        { quoted: m }
+      );
+
+      // Borrar archivo temporal
+      fs.unlinkSync(oggPath);
+
+    } catch (error) {
+      console.error('Error enviando nota de voz:', error);
+      await m.reply('*Algo salió mal al enviar la nota de voz.*');
+    }
   }
   return !0;
 };
-export default handler;
 
-  //const s = seconds: '4556'
-  // const estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: {orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '𝑇ℎ𝑒 𝑀𝑦𝑠𝑡𝑖𝑐 - 𝐵𝑜𝑡', orderTitle: 'Bang', thumbnail: fs.readFileSync('./src/assets/images/menu/languages/es/menu.png'), sellerJid: '0@s.whatsapp.net'}}}
-  // const estiloaudio = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: {"audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"}}}
+export default handler;

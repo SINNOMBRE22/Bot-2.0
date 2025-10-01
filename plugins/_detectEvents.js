@@ -1,7 +1,4 @@
-// Creditos del codigo a @Gatito-kw //
-/* GitHub: https://github.com/Gatito-kw */
-/* Bot: https://github.com/Gatito-kw/nekobot-md */
-
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
 import { WAMessageStubType } from "baileys";
 import fetch from 'node-fetch';
 import fs from 'fs';
@@ -36,7 +33,7 @@ export async function before(m, { conn, participants }) {
 
     let groupName = "el grupo";
     let groupMetadata = groupMetadataCache.get(m.chat);
-    let pp = 'https://raw.githubusercontent.com/BrunoSobrino/TheMystic-Bot-MD/master/src/avatar_contact.png';
+    let pp = 'https://raw.githubusercontent.com/BrunoSobrino/SunJimWoo-Bot-MD/master/src/avatar_contact.png';
     let img = null;
 
     if (!groupMetadata) {

@@ -1,11 +1,11 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antiarab.js
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
 
 
 const handler = (m) => m;
 handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
   const datas = global
   let idioma = datas.db.data.users[m.sender].language 
-  // todo: sometimes this trows undefined.json ill fix
+     // todo: a veces esto arroja undefined.json, lo arreglaré 
   if (idioma === undefined || idioma === null) {
     idioma = 'es'
   }

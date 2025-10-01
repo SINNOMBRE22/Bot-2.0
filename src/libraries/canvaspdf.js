@@ -1,5 +1,6 @@
-/*import { promises as fs } from 'fs';
-import { Image, createCanvas, loadImage, PDFDocument } from 'canvas';
+import { promises as fs } from 'fs';
+import { createCanvas, loadImage } from 'canvas';
+import { PDFDocument } from 'pdf-lib';
 import path from 'path';
 
 const tmpDir = path.resolve('./tmp');
@@ -8,7 +9,7 @@ const tmpDir = path.resolve('./tmp');
 await fs.mkdir(tmpDir, { recursive: true });
 
 const generateShortId = () => {
-  return Math.floor(1000 + Math.random() * 9000).toString(); // Genera un número aleatorio de 4-6 dígitos
+  return Math.floor(1000 + Math.random() * 9000).toString(); // Genera un número aleatorio de 4 dígitos
 };
 
 const createPDFDocument = async () => {
@@ -35,13 +36,13 @@ const addImageToPDF = async (pdfId, imageUrl) => {
   const existingBuffer = await fs.readFile(pdfPath);
   const existingDoc = await PDFDocument.load(existingBuffer);
 
-  // Crear una nueva página en el PDF existente
+  // Crear un canvas para la imagen
   const canvas = createCanvas(612, 792);
   const ctx = canvas.getContext('2d');
 
   const image = await loadImage(imageUrl);
 
-  // Calcular las dimensiones para que la imagen ocupe todo el lienzo manteniendo la proporción
+  // Calcular dimensiones manteniendo proporción
   const { width: imgWidth, height: imgHeight } = image;
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
@@ -64,7 +65,7 @@ const addImageToPDF = async (pdfId, imageUrl) => {
 
   ctx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
 
-  // Convertir el canvas a una imagen para añadirla como nueva página en el PDF
+  // Convertir el canvas a imagen PNG
   const imgBuffer = canvas.toBuffer('image/png');
   const imgPdfDoc = await PDFDocument.create();
   const imgPdfPage = imgPdfDoc.addPage([canvasWidth, canvasHeight]);
@@ -80,6 +81,7 @@ const addImageToPDF = async (pdfId, imageUrl) => {
   const imgPdfBuffer = await imgPdfDoc.save();
   const imgPdfToAdd = await PDFDocument.load(imgPdfBuffer);
 
+  // Combinar el PDF original con la nueva página
   const newPdfDoc = await PDFDocument.create();
   const copiedPages = await newPdfDoc.copyPages(existingDoc, existingDoc.getPageIndices());
   copiedPages.forEach((page) => newPdfDoc.addPage(page));
@@ -94,4 +96,4 @@ const addImageToPDF = async (pdfId, imageUrl) => {
   return { status: true, pdf_id: pdfId, result: { title: 'Image PDF', url: pdfPath } };
 };
 
-export { createPDFDocument, addImageToPDF };*/
+export { createPDFDocument, addImageToPDF };

@@ -1,5 +1,4 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antitoxic.js
-
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
 const toxicRegex = /\b(puto|puta|rata|estupido|imbecil|rctmre|mrd|verga|vrga|maricon)\b/i;
 
 export async function before(m, {isAdmin, isBotAdmin, isOwner}) {

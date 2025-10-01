@@ -1,5 +1,4 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antilink.js
-
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
   
 const linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i;
 export async function before(m, {conn, isAdmin, isBotAdmin}) {

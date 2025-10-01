@@ -2180,8 +2180,8 @@ export function serialize() {
                     const baileysStarts = ['NJX-', 'Lyru-', 'META-', 'EvoGlobalBot-', 'FizzxyTheGreat-', 'BAE5', '3EB0', 'B24E', '8SCO', 'SUKI', 'MYSTIC-'];
                     const hasKnownPrefix = baileysStarts.some(prefix => messageId.startsWith(prefix));
 		            const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
-					const isMysticPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
-                    return isMysticPattern || isSukiPattern || hasKnownPrefix || false;
+					const isSunJimWooPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
+                    return isSunJimWooPattern || isSukiPattern || hasKnownPrefix || false;
                 } catch (e) {
                     console.error("Error en isBaileys getter:", e);
                     return false;
@@ -2587,8 +2587,8 @@ export function serialize() {
                                     const baileysStarts = ['NJX-', 'Lyru-', 'META-', 'EvoGlobalBot-', 'FizzxyTheGreat-', 'BAE5', '3EB0', 'B24E', '8SCO', 'SUKI', 'MYSTIC-'];
                                     const hasKnownPrefix = baileysStarts.some(prefix => messageId.startsWith(prefix));
 				                    const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
-									const isMysticPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
-                                    return isMysticPattern || isSukiPattern || hasKnownPrefix || false;
+									const isSunJimWooPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
+                                    return isSunJimWooPattern || isSukiPattern || hasKnownPrefix || false;
                                 },
                                 enumerable: true,
                             },

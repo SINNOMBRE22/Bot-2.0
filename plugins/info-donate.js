@@ -26,7 +26,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
    const document = doc[Math.floor(Math.random() * doc.length)];
    
    const buttonMessage = {
-     'document': {url: `https://github.com/BrunoSobrino/TheMystic-Bot-MD`},
+     'document': {url: `https://github.com/BrunoSobrino/SunJimWoo-Bot-MD`},
      'mimetype': `application/${document}`,
      'fileName': `💖 DONACIONES 💖`,
      'fileLength': 99999999999999,
@@ -36,7 +36,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
        'isForwarded': true,
        'mentionedJid': conn.parseMention(donar),
        'externalAdReply': {
-         'mediaUrl': 'https://github.com/BrunoSobrino/TheMystic-Bot-MD',
+         'mediaUrl': 'https://github.com/BrunoSobrino/SunJimWoo-Bot-MD',
          'mediaType': 2,
          'previewType': 'pdf',
          'title': '💖 DONACIONES - Apoya el proyecto',

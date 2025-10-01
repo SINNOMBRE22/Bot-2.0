@@ -1,8 +1,5 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antilink2.js
-
- // Para configurar o idioma, na raiz do projeto altere o arquivo config.json
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
   // Para configurar el idioma, en la raíz del proyecto, modifique el archivo config.json.
-  // To set the language, in the root of the project, modify the config.json file.
 
 const linkRegex = /https:/i;
 export async function before(m, {conn, isAdmin, isBotAdmin, text}) {

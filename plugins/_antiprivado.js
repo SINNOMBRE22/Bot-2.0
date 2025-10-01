@@ -1,5 +1,4 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antiprivado.js
-
+// SunJinWoo - _antiarab.js creado por SinNombre +5215629885039
 export async function before(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner}) {
     const datas = global
     const idioma = datas.db.data.users[m.sender].language || global.defaultLenguaje || 'es'
