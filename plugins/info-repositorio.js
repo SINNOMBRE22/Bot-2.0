@@ -8,7 +8,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
    const _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`))
    const tradutor = _translate.plugins.info_repositorio
 
-   const res = await fetch('https://api.github.com/repos/BrunoSobrino/SunJimWoo-Bot-MD');
+   const res = await fetch('https://api.github.com/repos/SINNOMBRE22/Bot-2.0');
    const json = await res.json();
    let txt = `${tradutor.texto1[0]}\n\n`;
    txt += `${tradutor.texto1[1]} ${json?.name || tradutor.texto1[2]}\n\n`;

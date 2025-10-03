@@ -1,3 +1,4 @@
+import { exec } from 'child_process';
 import { generateWAMessageFromContent } from "baileys";
 import { smsg } from './src/libraries/simple.js';
 import { format } from 'util';
@@ -1081,6 +1082,7 @@ ${tradutor.texto1[1]} ${messageNumber}/3
  * Handle groups participants update
  * @param {import("baileys").BaileysEventMap<unknown>['group-participants.update']} groupsUpdate
  */
+//================================================================================================
 export async function participantsUpdate({ id, participants, action }) {
   const idioma = global?.db?.data?.chats[id]?.language || global.defaultLenguaje;
   const _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`))
@@ -1091,55 +1093,156 @@ export async function participantsUpdate({ id, participants, action }) {
   if (global.db.data == null) await loadDatabase();
   const chat = global.db.data.chats[id] || {};
   const botTt = global.db.data.settings[mconn?.conn?.user?.jid] || {};
-  let text = '';
+
   switch (action) {
     case 'add':
-    case 'remove':
       if (chat.welcome && !chat?.isBanned) {
-        if (action === 'remove' && participants.includes(m?.conn?.user?.jid)) return;
-        const groupMetadata = await m?.conn?.groupMetadata(id) || (conn?.chats[id] || {}).metadata;
+        const groupMetadata = await m?.conn?.groupMetadata(id) || {};
+        const groupDesc = groupMetadata?.desc?.toString() || '*𝚂𝙸𝙽 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝙲𝙸𝙾𝙽*';
         for (const user of participants) {
           try {
-          let pp = await m?.conn?.profilePictureUrl(user, 'image').catch(_ => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60');
-           const apii = await mconn?.conn?.getFile(pp);
-           const antiArab = JSON.parse(fs.readFileSync('./src/antiArab.json'));
-           const userPrefix = antiArab.some((prefix) => user.startsWith(prefix));
-           const botTt2 = groupMetadata?.participants?.find((u) => m?.conn?.decodeJid(u.id) == m?.conn?.user?.jid) || {};
-           const isBotAdminNn = botTt2?.admin === 'admin' || false;
-           text = (action === 'add' ? (chat.sWelcome || tradutor.texto1 || conn.welcome || 'Welcome, @user!').replace('@subject', await m?.conn?.getName(id)).replace('@desc', groupMetadata?.desc?.toString() || '*𝚂𝙸𝙽 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝙲𝙸𝙾𝙽*').replace('@user', '@' + user.split('@')[0]) :
-            (chat.sBye || tradutor.texto2 || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]);
-            if (userPrefix && chat.antiArab && botTt.restrict && isBotAdminNn && action === 'add') {
-           const responseb = await m.conn.groupParticipantsUpdate(id, [user], 'remove');
-            if (responseb[0].status === '404') return;
-           const fkontak2 = { 'key': { 'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo' }, 'message': { 'contactMessage': { 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` } }, 'participant': '0@s.whatsapp.net' };
-           await m?.conn?.sendMessage(id, { text: `*[❗] @${user.split('@')[0]} ᴇɴ ᴇsᴛᴇ ɢʀᴜᴘᴏ ɴᴏ sᴇ ᴘᴇʀᴍɪᴛᴇɴ ɴᴜᴍᴇʀᴏs ᴀʀᴀʙᴇs ᴏ ʀᴀʀᴏs, ᴘᴏʀ ʟᴏ ϙᴜᴇ sᴇ ᴛᴇ sᴀᴄᴀʀᴀ ᴅᴇʟ ɢʀᴜᴘᴏ*`, mentions: [user] }, { quoted: fkontak2 });
-           return;
-            }
-            await m?.conn?.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] });
+            const username = `@${user.split('@')[0]}`;
+            const currentDate = new Date().toLocaleDateString();
+            const currentTime = new Date().toLocaleTimeString();
+
+            // Mensaje de bienvenida en formato bonito
+            const welcomeMessage = `
+━━━━━━✦❘༻༺❘✦━━━━━━
+🛡️ 𝐍𝐔𝐄𝐕𝐎 𝐂𝐀𝐙𝐀𝐃𝐎𝐑: ${username}
+🔹 𝐈𝐃: ${user.replace('@s.whatsapp.net', '')}
+⏳ 𝐇𝐨𝐫𝐚 𝐝𝐞 𝐢𝐧𝐠𝐫𝐞𝐬𝐨: ${currentTime} - ${currentDate}
+━━━━━━✦❘༻༺❘✦━━━━━━
+🤖 𝘺𝘰 𝘴𝘰𝘺 ${m.conn.user.name}, *El Bot De Este Grupo.*
+━━━━━━✦❘༻༺❘✦━━━━━━
+⚔️ 𝐂𝐎𝐌𝐀𝐍𝐃𝐎𝐒:
+✧ .arise – Ver comandos
+✧ .reporte – Reportar anomalías`;
+
+            await m.conn.sendMessage(id, {
+              text: welcomeMessage,
+              mentions: [user],
+              contextInfo: {
+                mentionedJid: [user],
+                forwardingScore: 999,
+                isForwarded: true,
+                externalAdReply: {
+                  title: `𝗕𝗜𝗘𝗡𝗩𝗘𝗡𝗜𝗗𝗢 𝗔 ${groupMetadata.subject?.toUpperCase() || 'EL GRUPO'}`,
+                  body: "¡Disfruta tu estadía!",
+                  thumbnailUrl: 'https://i.postimg.cc/43jvhfNB/IMG-20250514-WA0005.jpg',
+                  mediaType: 1,
+                  renderLargerThumbnail: true
+                }
+              }
+            });
+
+            // Descripción + enlace de invitación
+            let inviteLink = 'https://ejemplo.com';
+            try { inviteLink = `https://chat.whatsapp.com/${await m.conn.groupInviteCode(id)}` } catch {}
+            const rulesMessage = `
+━━━━━━✦❘༻༺❘✦━━━━━━
+📜 𝐃𝐄𝐒𝐂𝐑𝐈𝐏𝐂𝐈Ó𝐍 𝐃𝐄𝐋 𝐆𝐑𝐔𝐏𝐎 📜
+━━━━━━✦❘༻༺❘✦━━━━━━
+${groupDesc}
+━━━━━━✦❘༻༺❘✦━━━━━━
+🔗 𝐄𝐍𝐋𝐀𝐂𝐄:
+${inviteLink}`.trim();
+
+            await m.conn.sendMessage(id, { text: rulesMessage, contextInfo: { forwardingScore: 999, isForwarded: true } });
+
           } catch (e) {
-          console.log(e);
+            console.error('❌ Error al enviar bienvenida:', e);
           }
         }
       }
       break;
+
+     case 'remove':
+  if (chat.welcome && !chat.isBanned) {
+    for (const user of participants) {
+      try {
+        const username = `@${user.split('@')[0]}`;
+
+        // Mensaje de despedida
+        await m.conn.sendMessage(id, {
+          text: `*En un giro del destino,* ${username} *se despidió en silencio… y se perdió en la oscuridad. ALV. 🖤🌑*`,
+          mentions: [user]
+        });
+
+        // Audio de despedida - VERSIÓN CORREGIDA
+        const mp3Path = './src/assets/audio/despedida.mp3';
+        const oggPath = './src/assets/audio/temp_despedida.ogg';
+
+        // Convertir MP3 a OGG/OPUS usando ffmpeg
+        await new Promise((resolve, reject) => {
+          exec(`ffmpeg -y -i "${mp3Path}" -c:a libopus "${oggPath}"`, (error) => {
+            if (error) reject(error);
+            else resolve();
+          });
+        });
+
+        // Leer el OGG resultante
+        const audioBuffer = fs.readFileSync(oggPath);
+
+        // Enviar como nota de voz
+        await m.conn.sendMessage(
+          id,
+          {
+            audio: audioBuffer,
+            mimetype: 'audio/ogg; codecs=opus',
+            ptt: true,
+            contextInfo: {
+              mentionedJid: [user],
+              externalAdReply: {
+                title: 'Despedida de un guerrero',
+                body: `${username} se fue ALV 😂`,
+                sourceUrl: 'https://api.x.sinnombre.mx',
+                thumbnailUrl: 'https://tinyurl.com/SinNombre-chan'
+              }
+            }
+          },
+          { mentions: [user] }
+        );
+
+        // Borrar archivo temporal
+        fs.unlinkSync(oggPath);
+
+      } catch (e) {
+        console.error('❌ Error al enviar despedida:', e);
+        // En caso de error, enviar solo el mensaje de texto
+        await m.conn.sendMessage(id, {
+          text: `❌ Error al enviar audio de despedida para ${username}`,
+          mentions: [user]
+        });
+      }
+    }
+  }
+  break;
+    // Promociones y degradaciones
     case 'promote':
     case 'daradmin':
-    case 'darpoder':
-      text = (chat.sPromote || tradutor.texto3 || conn?.spromote || '@user ```is now Admin```');
-    case 'demote':
-    case 'quitarpoder':
-    case 'quitaradmin':
-      if (!text) {
-        text = (chat?.sDemote || tradutor.texto4 || conn?.sdemote || '@user ```is no longer Admin```');
-      }
+    case 'darpoder': {
+      let text = (chat.sPromote || tradutor.texto3 || conn?.spromote || '@user ```is now Admin```');
       text = text.replace('@user', '@' + participants[0].split('@')[0]);
       if (chat.detect && !chat?.isBanned) {
         mconn?.conn?.sendMessage(id, { text, mentions: mconn?.conn?.parseMention(text) });
       }
       break;
+    }
+
+    case 'demote':
+    case 'quitarpoder':
+    case 'quitaradmin': {
+      let text = (chat?.sDemote || tradutor.texto4 || conn?.sdemote || '@user ```is no longer Admin```');
+      text = text.replace('@user', '@' + participants[0].split('@')[0]);
+      if (chat.detect && !chat?.isBanned) {
+        mconn?.conn?.sendMessage(id, { text, mentions: mconn?.conn?.parseMention(text) });
+      }
+      break;
+    }
   }
 }
 
+//================================================================================================
 /**
  * Handle groups update
  * @param {import("baileys").BaileysEventMap<unknown>['groups.update']} groupsUpdate

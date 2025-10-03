@@ -1,80 +1,106 @@
-/* ⚠ POR FAVOR NO MODIFIQUES NADA DE AQUÍ ⚠ */
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
- try {   
-   const donar = `╭─「 💖 *DONACIONES* 💖 」
-│
-│ ¡Hola *${m?.name}*! 👋
-│
-│ ¿Te gusta este proyecto? 🤖✨
-│ ¡Ayúdanos a mantenerlo!
-│
-├─「 💳 *Métodos de donación* 」
-│
-│ • PayPal: paypal.me/BrunoSob 💰
-│
-│ 💬 *Otras formas:*
-│ Contáctame: @5219996125657
-│ Numero: wa.me/5219996125657
-│
-│ 📝 *Nota:* Toda donación
-│ nos ayuda a crecer juntos 🌱
-│
-╰─「 *¡Gracias por tu apoyo!* 🙏 」`.trim();
+  try {
+    const wm = 'SunJimWoo Bot';
+    
+    // Datos directos
+    const donationData = {
+      clabe: '138580000030466501',
+      banco: 'uala',
+      beneficiario: 'Cristian Aguilar',
+      paypal: 'https://www.paypal.me/sinnombre395',
+      contacto: '5215629885039'
+    };
 
-   const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
-   const document = doc[Math.floor(Math.random() * doc.length)];
-   
-   const buttonMessage = {
-     'document': {url: `https://github.com/BrunoSobrino/SunJimWoo-Bot-MD`},
-     'mimetype': `application/${document}`,
-     'fileName': `💖 DONACIONES 💖`,
-     'fileLength': 99999999999999,
-     'pageCount': 200,
-     'contextInfo': {
-       'forwardingScore': 200,
-       'isForwarded': true,
-       'mentionedJid': conn.parseMention(donar),
-       'externalAdReply': {
-         'mediaUrl': 'https://github.com/BrunoSobrino/SunJimWoo-Bot-MD',
-         'mediaType': 2,
-         'previewType': 'pdf',
-         'title': '💖 DONACIONES - Apoya el proyecto',
-         'body': wm,
-         'thumbnail': imagen1,
-         'sourceUrl': 'https://www.youtube.com/channel/UCSTDMKjbm-EmEovkygX-lCA'}},
-     'caption': donar,
-     'footer': wm,
-     'headerType': 6
-   };
-   
-   conn.sendMessage(m.chat, buttonMessage, {quoted: m});
-   
- } catch {
-   const simpleMsg = `💖 *DONACIONES*
+    // Intentar cargar del JSON
+    try {
+      const esPath = join(process.cwd(), 'src', 'languages', 'es.json');
+      const esData = JSON.parse(readFileSync(esPath, 'utf8'));
+      const textoDonar = esData.info_donar.texto1;
+      
+      textoDonar.forEach(linea => {
+        if (linea.includes('𝙲𝙻𝙰𝚅𝙴:')) donationData.clabe = linea.split('*')[0].replace('𝙲𝙻𝙰𝚅𝙴:', '').trim();
+        if (linea.includes('𝙱𝙰𝙽𝙲𝙾:')) donationData.banco = linea.split('*')[0].replace('𝙱𝙰𝙽𝙲𝙾:', '').trim();
+        if (linea.includes('𝙱𝙴𝙽𝙴𝙵𝙸𝙲𝙸𝙰𝚁𝙸𝙾:')) donationData.beneficiario = linea.split('*')[0].replace('𝙱𝙴𝙽𝙴𝙵𝙸𝙲𝙸𝙰𝚁𝙸𝙾:', '').trim();
+        if (linea.includes('𝙿𝙰𝚈𝙿𝙰𝙻:')) donationData.paypal = linea.split('*')[0].replace('𝙿𝙰𝚈𝙿𝙰𝙻:', '').trim();
+        if (linea.includes('wa.me')) donationData.contacto = linea.split('*')[0].replace('wa.me/', '').trim();
+      });
+    } catch (jsonError) {
+      console.log('Usando datos por defecto para donaciones');
+    }
 
-¡Hola *${m?.name}*! 
+    const donar = `
+╭─「 💖 DONACIONES 💖 」
+│
+│ ¡Hola *${m.name || 'usuario'}*! 👋
+│ 
+│ Si deseas apoyar el desarrollo
+│ del bot, puedes hacerlo mediante:
+│
+│ ▸ *CLABE:* ${donationData.clabe}
+│ ▸ *Banco:* ${donationData.banco}
+│ ▸ *Beneficiario:* ${donationData.beneficiario}
+│ ▸ *PayPal:* ${donationData.paypal}
+│
+│ ¡Tu apoyo es muy importante! 💞
+╰────`.trim();
 
-¿Te gusta este bot? ¡Ayúdanos a mantenerlo activo!
+    // Crear mensaje con botones usando la estructura más común
+    const message = {
+      text: donar,
+      footer: wm,
+      buttons: [
+        {
+          url: donationData.paypal,
+          displayText: '💰 Donar por PayPal'
+        },
+        {
+          url: `https://wa.me/${donationData.contacto}`,
+          displayText: '📞 Contactar al Creador'
+        }
+      ],
+      headerType: 1
+    };
 
-🎯 *¿Por qué donar?*
-• Mantener servidor activo
-• Nuevas funciones  
-• Mejor velocidad
-• Soporte 24/7
+    // Enviar usando sendButton (más compatible)
+    await conn.sendButton(
+      m.chat, 
+      donar, 
+      wm, 
+      null, 
+      [
+        ['💰 PayPal', donationData.paypal],
+        ['📞 Contactar', `https://wa.me/${donationData.contacto}`]
+      ], 
+      m
+    );
 
-💳 *Métodos:*
-• PayPal: paypal.me/BrunoSob
+  } catch (error) {
+    console.error('Error en comando donar:', error);
+    
+    // Mensaje de respaldo con enlaces en el texto
+    const simpleMsg = `💖 *DONACIONES*
 
-💬 *Otras formas:*
-Contáctame: @5219996125657
+¡Hola *${m.name || 'usuario'}*! 
 
-¡Gracias por tu apoyo! 🙏`;
-   
-   m.reply(simpleMsg);
- }
+Para donar:
+• CLABE: 138580000030466501
+• Banco: uala
+• Beneficiario: Cristian Aguilar
+
+*Enlaces directos:*
+🔗 PayPal: https://www.paypal.me/sinnombre395
+📞 Contacto: https://wa.me/5215629885039
+
+¡Tu apoyo es muy importante! 💞`;
+    
+    m.reply(simpleMsg);
+  }
 };
-handler.help = ['donate'];
+
+handler.help = ['donar'];
 handler.tags = ['info'];
-handler.command = /^(donate|donar|apoyar|donación|donacion|apoyo|ayuda|colaborar|contribuir)$/i
+handler.command = /^(donar|apoyar|donate)$/i;
 export default handler;

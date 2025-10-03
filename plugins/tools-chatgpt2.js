@@ -65,7 +65,7 @@ function saveUserMessage(sender, role, content) {
 async function luminsesi(prompt, sender, contextLogic = '') {
   saveUserMessage(sender, 'user', prompt);
   const messages = getUserHistory(sender);
-  const logic = contextLogic || 'Tú eres un bot llamado Youru, siempre educado y útil.';
+  const logic = contextLogic || 'Tú eres un bot llamado Sung Jin-Woo, experto en todp y útil.';
   
   try {
     const { data } = await axios.post('https://api.manaxu.my.id/api/v1/ai', 
