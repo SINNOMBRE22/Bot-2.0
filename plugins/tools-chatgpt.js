@@ -41,7 +41,7 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
         }
         
         let context = `Eres Sun Jim-Woo Bot (v3.0). Idioma: ${idioma.toUpperCase()}\n` +
-                     `Creador: Cristian Aguilar (SinNombre) | Repositorio: https://github.com/BrunoSobrino/SunJimWoo-Bot-MD | Numero del creador: +52 1 999 612 5657\n\n`;
+                     `Creador: Cristian Aguilar (SinNombre) | Repositorio: https://github.com/SINNOMBRE22/bot2.0 | Numero del creador: +52 1 999 612 5657\n\n`;
         
         if (hasImage && imageDescription.trim()) {
             context += `IMAGEN DISPONIBLE PARA ANÁLISIS:\n` +

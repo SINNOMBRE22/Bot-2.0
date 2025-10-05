@@ -1,5 +1,5 @@
 /*              Codigo Creado Por Cristian Aguilar (SinNombre)
-      (https://github.com/BrunoSobrino/SunJimWoo-Bot-MD)
+      (https://github.com/SINNOMBRE22/bot2.0)
 */
 
 

@@ -292,7 +292,29 @@ ${toBold('Activo:')} ▹ ${muptime} ◃
                 enabled: !p.disabled
             }));
 
-        let menuSections = Object.keys(tags).map(tag => {
+        // 🔥 FUNCIÓN PARA DETECTAR AUTOMÁTICAMENTE NUEVAS CATEGORÍAS
+        const scanPluginsForCategories = () => {
+            const allCategories = new Set();
+            
+            // Escanear todos los plugins
+            Object.values(global.plugins).forEach(plugin => {
+                if (!plugin.disabled && plugin.tags) {
+                    if (Array.isArray(plugin.tags)) {
+                        plugin.tags.forEach(tag => allCategories.add(tag));
+                    } else {
+                        allCategories.add(plugin.tags);
+                    }
+                }
+            });
+            
+            // Agregar categorías de extrasCommands
+            Object.keys(extrasCommands).forEach(tag => allCategories.add(tag));
+            
+            return Array.from(allCategories);
+        };
+
+        // 🔥 GENERAR MENÚ DINÁMICAMENTE CON CATEGORÍAS DETECTADAS
+        let menuSections = scanPluginsForCategories().map(tag => {
             let pluginCommands = help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
                 return menu.help.map(help => {
                     return body.replace(/@cmd/g, menu.prefix ? help : '%p' + help)
@@ -331,7 +353,9 @@ ${toBold('Activo:')} ▹ ${muptime} ◃
 
             let sectionText = '';
             if (categoryCommands.length > 0) {
-                sectionText = header.replace(/@category/g, tags[tag]) + '\n' + 
+                // Usar traducción si existe, sino usar el nombre del tag con primera letra mayúscula
+                const categoryName = tags[tag] || tag.charAt(0).toUpperCase() + tag.slice(1);
+                sectionText = header.replace(/@category/g, categoryName) + '\n' + 
                              categoryCommands.join('\n') + '\n' + footer;
             }
             return sectionText;

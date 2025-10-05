@@ -1,5 +1,5 @@
-// Codigo hecho para The Sun Jim-Woo - Bot - MD por https://github.com/BrunoSobrino
-// By @BrunoSobrino
+// Codigo hecho para The Sun Jim-Woo - Bot - MD por https://github.com/SINNOMBRE22
+// By @SINNOMBRE22
 import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("baileys")).default;
 

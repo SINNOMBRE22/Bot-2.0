@@ -16,7 +16,7 @@ const handler = async (m, {conn, usedPrefix}) => {
     throw false;
   }
   
-  const res = await fetchJson(`https://raw.githubusercontent.com/BrunoSobrino/SunJimWoo-Bot-MD/master/src/JSON/tebaklagu.json`);
+  const res = await fetchJson(`https://raw.githubusercontent.com/SINNOMBRE22/Bot-2.0/main/src/JSON/tebaklagu.json`);
   const json = res[Math.floor(Math.random() * res.length)];
   
   const caption = `

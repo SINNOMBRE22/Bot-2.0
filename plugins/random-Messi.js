@@ -1,6 +1,6 @@
 import axios from 'axios';
 const handler = async (m, {conn, usedPrefix, command}) => {
-  const res = (await axios.get(`https://raw.githubusercontent.com/BrunoSobrino/SunJimWoo-Bot-MD/master/src/JSON/Messi.json`)).data;
+  const res = (await axios.get(`https://raw.githubusercontent.com/SINNOMBRE22/Bot-2.0/main/src/JSON/Messi.json`)).data;
   const url = await res[Math.floor(res.length * Math.random())];
   conn.sendFile(m.chat, url, 'error.jpg', `*Messi*`, m);
 };

@@ -758,7 +758,7 @@ END:VCARD
         buttonParamsJson: JSON.stringify({
             title: lister[0],
             sections: [{
-		    title: lister[1],
+                    title: lister[1],
                 rows: [{
                     header: lister[2],
                     title: lister[3],
@@ -2151,7 +2151,7 @@ export function serialize() {
     };
     const safeSplit = (str, separator) =>
         typeof str === "string" ? str.split(separator) : [];
-    
+
     return Object.defineProperties(proto.WebMessageInfo.prototype, {
         conn: {
             value: undefined,
@@ -2179,9 +2179,9 @@ export function serialize() {
                     //if (!isFromBot) return false;
                     const baileysStarts = ['NJX-', 'Lyru-', 'META-', 'EvoGlobalBot-', 'FizzxyTheGreat-', 'BAE5', '3EB0', 'B24E', '8SCO', 'SUKI', 'MYSTIC-'];
                     const hasKnownPrefix = baileysStarts.some(prefix => messageId.startsWith(prefix));
-		            const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
-					const isSunJimWooPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
-                    return isSunJimWooPattern || isSukiPattern || hasKnownPrefix || false;
+                            const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
+                                        const isMysticPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
+                    return isMysticPattern || isSukiPattern || hasKnownPrefix || false;
                 } catch (e) {
                     console.error("Error en isBaileys getter:", e);
                     return false;
@@ -2586,9 +2586,9 @@ export function serialize() {
                                     //if (!isFromBot) return false;
                                     const baileysStarts = ['NJX-', 'Lyru-', 'META-', 'EvoGlobalBot-', 'FizzxyTheGreat-', 'BAE5', '3EB0', 'B24E', '8SCO', 'SUKI', 'MYSTIC-'];
                                     const hasKnownPrefix = baileysStarts.some(prefix => messageId.startsWith(prefix));
-				                    const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
-									const isSunJimWooPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
-                                    return isSunJimWooPattern || isSukiPattern || hasKnownPrefix || false;
+                                                    const isSukiPattern = /^SUKI[A-F0-9]+$/.test(messageId);
+                                                                        const isMysticPattern = /^MYSTIC[A-F0-9]+$/.test(messageId);
+                                    return isMysticPattern || isSukiPattern || hasKnownPrefix || false;
                                 },
                                 enumerable: true,
                             },

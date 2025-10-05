@@ -1,5 +1,5 @@
 {
-  "name": "SunJimWoo-Bot-MD",
+  "name": "Sung Jin-Woo",
   "version": "1.0.0",
   "description": "Un chatbot automatizado para WhatsApp basado en Node.js, que permite realizar múltiples funciones y personalizaciones en la plataforma.",
   "main": "index.js",
@@ -16,16 +16,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/BrunoSobrino/SunJimWoo-Bot-MD",
+  "homepage": "https://github.com/SINNOMBRE22/bot2.0",
   "author": {
-    "name": "BrunoSobrino"
+    "name": "SINNOMBRE22"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrunoSobrino/SunJimWoo-Bot-MD.git"
+    "url": "git+https://github.com/SINNOMBRE22/bot2.0.git"
   },
   "bugs": {
-    "url": "https://github.com/BrunoSobrino/SunJimWoo-Bot-MD/issues"
+    "url": "https://github.com/SINNOMBRE22/bot2.0/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {

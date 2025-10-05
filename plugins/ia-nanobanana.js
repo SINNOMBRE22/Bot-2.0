@@ -2,91 +2,50 @@ import fs from 'fs';
 import { img2img } from '../src/libraries/nanobanana.js';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  // Verificar si hay texto
+
+  const q = m.quoted ? m.quoted : m;
+  const mime = (q.msg || q).mimetype || q.mediaType || '';
+
+  if (!/image/g.test(mime)) throw `*Debes responder a una imagen*`;
   if (!text) throw `*Escribe un prompt/descripción para la edición*`;
 
-  // Obtener las imágenes
-  const quoted = m.quoted ? m.quoted : m;
-  const mime = (quoted.msg || quoted).mimetype || quoted.mediaType || '';
-  
-  // Array para almacenar las imágenes
-  let images = [];
-
-  // Verificar si el mensaje citado es una imagen
-  if (/image/g.test(mime)) {
-    const data = await quoted.download?.();
-    if (data) images.push(data);
-  }
-
-  // Buscar imágenes en el mensaje actual (hasta 2)
-  if (m.message?.imageMessage) {
-    const data = await conn.downloadMediaMessage(m);
-    if (data) images.push(data);
-  }
-
-  // Verificar que hay al menos una imagen
-  if (images.length === 0) throw `*Debes responder a una imagen o enviar una imagen con el comando*`;
-
-  // Limitar a máximo 2 imágenes
-  if (images.length > 2) {
-    images = images.slice(0, 2);
-  }
+  const data = await q.download?.();
+  if (!data) throw `*Error al descargar la imagen*`;
 
   try {
-    // Emojis de reloj para la animación
-    const clockEmojis = ['🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛'];
+    // Animación de reloj real
+    const clockFrames = ['🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛'];
+    let frameIndex = 0;
     
-    // Enviar mensaje inicial
-    const progressMsg = await conn.sendMessage(m.chat, { 
-      text: `🕐 Procesando ${images.length} imagen(es)...` 
+    const progressMsg = await conn.sendMessage(m.chat, {
+      text: `${clockFrames[frameIndex]} Procesando imagen...`
     }, { quoted: m });
 
-    // Animación del reloj
-    let clockIndex = 0;
-    const clockInterval = setInterval(async () => {
-      clockIndex = (clockIndex + 1) % clockEmojis.length;
+    // Actualizar el reloj cada segundo
+    const progressInterval = setInterval(async () => {
+      frameIndex = (frameIndex + 1) % clockFrames.length;
       try {
-        await conn.relayMessage(m.chat, {
-          protocolMessage: {
-            key: progressMsg.key,
-            type: 14,
-            editedMessage: {
-              conversation: `${clockEmojis[clockIndex]} Procesando ${images.length} imagen(es)...`
-            }
-          }
-        }, {});
+        await conn.sendMessage(m.chat, {
+          text: `${clockFrames[frameIndex]} Procesando imagen...`,
+          edit: progressMsg.key
+        });
       } catch (e) {
-        // Ignorar errores de edición
+        // Si falla la edición, no hacer nada
       }
-    }, 2000);
+    }, 1000);
 
-    // Procesar las imágenes
-    const results = [];
-    for (const imageData of images) {
-      try {
-        const resultBuffer = await img2img(imageData, text);
-        results.push(resultBuffer);
-      } catch (error) {
-        console.error(error);
-        throw `*Error al procesar una de las imágenes*`;
-      }
-    }
+    const resultBuffer = await img2img(data, text);
 
-    // Detener la animación
-    clearInterval(clockInterval);
+    // Limpiar intervalo y eliminar mensaje de progreso
+    clearInterval(progressInterval);
+    await conn.sendMessage(m.chat, { delete: progressMsg.key }).catch(() => null);
 
-    // Enviar resultados
-    for (const resultBuffer of results) {
-      await conn.sendMessage(m.chat, { 
-        image: resultBuffer, 
-        caption: 'Aquí tienes tu imagen editada 🖼️' 
-      }, { quoted: m });
-    }
+    console.log(resultBuffer);
 
-    // Eliminar mensaje de progreso
-    await conn.sendMessage(m.chat, {
-      delete: progressMsg.key
-    });
+    await conn.sendMessage(m.chat, { 
+      image: resultBuffer, 
+      caption: 'Aquí tienes tu imagen 🖼️' 
+    }, { quoted: m });
 
   } catch (error) {
     console.error(error);

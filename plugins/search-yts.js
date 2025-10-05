@@ -1,14 +1,5 @@
-/*
+/* Tengo testigos, yo sí te quería*/
 
-- Agradecimiento a la comunidad de "WSApp • Developers"
- * https://chat.whatsapp.com/FaQunmlp9BmDRk6lEEc9FJ
-- Agradecimiento especial a Carlos (PT) por los codigos de interactiveMessage (botones)
-- Agradecimiento a Darlyn1234 por la estructura de uso en este codigo y quoted
- * https://github.com/darlyn1234
-- Adaptacion de imagen en tipo lista, codigo y funcionamiento por BrunoSobrino
- * https://github.com/BrunoSobrino
-
-*/
 import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from "baileys"
 import yts from 'yt-search';
 import fs from 'fs';

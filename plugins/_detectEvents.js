@@ -33,7 +33,7 @@ export async function before(m, { conn, participants }) {
 
     let groupName = "el grupo";
     let groupMetadata = groupMetadataCache.get(m.chat);
-    let pp = 'https://raw.githubusercontent.com/BrunoSobrino/SunJimWoo-Bot-MD/master/src/avatar_contact.png';
+    let pp = 'https://raw.githubusercontent.com/SINNOMBRE22/bot2.0/master/src/avatar_contact.png';
     let img = null;
 
     if (!groupMetadata) {

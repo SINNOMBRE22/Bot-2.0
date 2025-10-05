@@ -1,7 +1,7 @@
 {
     "___creditos": {
         "___Contribuidor": "https://github.com/jeffersonalionco",
-        "___Criador": "https://github.com/BrunoSobrino"
+        "___Criador": "https://github.com/SINNOMBRE22"
     },
     "plugins": {
         "antiarab": {
@@ -793,7 +793,7 @@
         },
         "downloader_ytmeta": {
             "texto1": "[❗] Enter a YouTube link.",
-            "texto2": "🤴🏻 Download by BrunoSobrino & SunJimWoo-Bot-MD 🤖"
+            "texto2": "🤴🏻 Download by SINNOMBRE22 & Sung Jin-Woo 🤖"
         },
         "downloader_ytv_2": {
             "texto1": "[❗𝐈𝐍𝐅𝐎❗] Enter the command followed by the YouTube video link*",
@@ -2401,8 +2401,8 @@
             "texto1": [
                 "*[❗] You are in a conversation or order to use the chatbot function*\n\n*—◉ Examples of Petitions and Orders*\n*◉ Reflection on the Netflix series Merlin 2022*\n*◉ JS code for a card game*"
             ],
-            "texto2": "You will act as a WhatsApp Bot created by BrunoSobrino, you will be The Sun Jim-Woo - Bot.",
-            "texto3": "You will act as a WhatsApp Bot created by BrunoSobrino, you will be The Sun Jim-Woo - Bot.",
+            "texto2": "You will act as a WhatsApp Bot created by SINNOMBRE22, you will be The Sun Jim-Woo - Bot.",
+            "texto3": "You will act as a WhatsApp Bot created by SINNOMBRE22, you will be The Sun Jim-Woo - Bot.",
             "texto4": "*[❗] Error, please try again*"
         },
         "herramientas_clima": {
@@ -2687,7 +2687,7 @@
             "texto2": "The Best Hosting 🚀"
         },
         "info_instalarbot": {
-            "texto1": "*—◉ MAIN BOT INSTALLATION*\n> Tutorial: https://youtu.be/eC9TfKICpcY\n> Official Page: https://boxmineworld.com\n> Control Panel: https://dash.boxmineworld.com/home\n> Panel: https://panel.boxmineworld.com\n> Support: https://discord.gg/84qsr4v \n\n------------------------------------\n—◉ TERTIARY BOT INSTALLATION\n> Tutorial: https://youtu.be/yRS4m36Zwkw\n\n------------------------------------\n\n*—◉ INSTALLATION COMMANDS*\n> Commands:\n- cd && termux-setup-storage\n- apt-get update -y && apt-get upgrade -y\n- pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn \n- git clone https://github.com/BrunoSobrino/SunJimWoo-Bot-MD.git && cd SunJimWoo-Bot-MD\n- yarn install\n- npm install\n- npm update\n- npm start\n\n------------------------------------\n\n—◉ ✔️ RE-ACTIVATION IN CASE OF STOP IN TERMUX ✔️\nENTER THE FOLLOWING COMMANDS ONE BY ONE:\n> cd SunJimWoo-Bot-MD\n> npm start\n\n------------------------------------\n\n—◉ 👽 GET ANOTHER QR CODE IN TERMUX 👽\nENTER THE FOLLOWING COMMANDS ONE BY ONE:\n> cd SunJimWoo-Bot-MD\n> rm -rf JinwooseSession\n> npm start",
+            "texto1": "*—◉ MAIN BOT INSTALLATION*\n> Tutorial: https://youtu.be/eC9TfKICpcY\n> Official Page: https://boxmineworld.com\n> Control Panel: https://dash.boxmineworld.com/home\n> Panel: https://panel.boxmineworld.com\n> Support: https://discord.gg/84qsr4v \n\n------------------------------------\n—◉ TERTIARY BOT INSTALLATION\n> Tutorial: https://youtu.be/yRS4m36Zwkw\n\n------------------------------------\n\n*—◉ INSTALLATION COMMANDS*\n> Commands:\n- cd && termux-setup-storage\n- apt-get update -y && apt-get upgrade -y\n- pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn \n- git clone https://github.com/SINNOMBRE22/bot2.0.git && cd Sung Jin-Woo\n- yarn install\n- npm install\n- npm update\n- npm start\n\n------------------------------------\n\n—◉ ✔️ RE-ACTIVATION IN CASE OF STOP IN TERMUX ✔️\nENTER THE FOLLOWING COMMANDS ONE BY ONE:\n> cd Sung Jin-Woo\n> npm start\n\n------------------------------------\n\n—◉ 👽 GET ANOTHER QR CODE IN TERMUX 👽\nENTER THE FOLLOWING COMMANDS ONE BY ONE:\n> cd Sung Jin-Woo\n> rm -rf JinwooseSession\n> npm start",
             "texto2": "The Best WhatsApp Bot"
         },
         "info_listprem": {
@@ -2722,12 +2722,12 @@
             "texto1": [
                 "_*< INFORMATION - REPOSITORY />*_",
                 "▢ *Name:*",
-                "SunJimWoo-Bot-MD",
+                "Sung Jin-Woo",
                 "▢ *Visitors:*",
                 "▢ *Size:*",
                 "▢ *Last update:*",
                 "▢ *URL:*",
-                "https://github.com/BrunoSobrino/SunJimWoo-Bot-MD",
+                "https://github.com/SINNOMBRE22/bot2.0",
                 "Forks ·",
                 "Stars ·",
                 "Issues\n\n",
@@ -3792,7 +3792,7 @@
             "texto11": [
                 "[ ⚠️ ] Warning",
                 "[ ⚠️ ] Warning",
-                "https://github.com/BrunoSobrino/SunJimWoo-Bot-MD"
+                "https://github.com/SINNOMBRE22/bot2.0"
             ]
         },
         "participantsUpdate": {

@@ -1,4 +1,4 @@
-/* Creado por Cristian Aguilar (SinNombre) (https://github.com/BrunoSobrino) */
+/* Creado por Cristian Aguilar (SinNombre) (https://github.com/SINNOMBRE22) */
 import fetch from 'node-fetch';
 import axios from 'axios';
 

@@ -6,11 +6,11 @@ El codigo de este archivo esta totalmente hecho por:
 - Aiden_NotLogic (https://github.com/ferhacks)
 
 El codigo de este archivo fue creado para:
-- SunJimWoo-Bot-MD (https://github.com/BrunoSobrino/SunJimWoo-Bot-MD)
+- Sung Jin-Woo (https://github.com/SINNOMBRE22/bot2.0)
 
 El codigo de este archivo fue parchado por:
 - ReyEndymion (https://github.com/ReyEndymion)
-- BrunoSobrino (https://github.com/BrunoSobrino)
+- SINNOMBRE22 (https://github.com/SINNOMBRE22)
 
 ⚠ PROHIBIDO EDITAR ⚠ -- ⚠ PROHIBIDO EDITAR ⚠ -- ⚠ PROHIBIDO EDITAR ⚠
 
