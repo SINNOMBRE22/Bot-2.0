@@ -4,13 +4,16 @@
 # 💠 **BOT-2.0**
 ### 🤖 Creado y desarrollado por **SinNombre**
 
-🌀 El sucesor evolucionado del legendario bot Mystic.  
-Potente, modular y 100% optimizado para VPS y ejecución continua.
+🌀 Potente, modular y 100% optimizado para VPS y ejecución continua.
 
 ![banner](https://capsule-render.vercel.app/api?type=waving&color=0:3a0ca3,100:7209b7&height=120&section=header&text=Sun-JinWoo&fontColor=ffffff&fontSize=45&animation=twinkling)
 
 </div>
 
+> ⚠️ **Aviso:**  
+> Algunos plugins (como `usuarios-demo`) necesitan una extensión de código adicional no incluida en el paquete principal.  
+> 🔑 Para adquirirla, contacta directamente al creador.  
+> 💰 Precio: **$200 MXN**
 ---
 
 ## ⚙️ **Requisitos Previos**
