@@ -73,17 +73,17 @@ cd Bot-2.0
 npm install
 ```
 
-> 9. # 1. Instala dependencias del sistema necesarias para canvas
+> Instala dependencias del sistema necesarias para canvas
 ```bash
 apt-get update
 apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 ```
 
-# 2. Limpia e instala de nuevo canvas
+Limpia e instala de nuevo canvas
 ```bash
 npm rebuild canvas --build-from-source
 ```
-# Si lo anterior no funciona:
+Si lo anterior no funciona:
 ```bash
 npm install canvas --build-from-source
 ```
