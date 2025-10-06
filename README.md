@@ -27,85 +27,72 @@ Antes de comenzar asegúrate de tener:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-
+```
 
 ---
 
 📦 2. Instalar dependencias necesarias
-
+```bash
 sudo apt install -y git ffmpeg imagemagick webp curl
-
+```
 
 ---
 
-💾 3. Clonar el repositorio
+⚡ 3. Instalar Node.js (método NVM recomendado)
 
+Actualizar Node.js
+```bash
+apt install nodejs
+node -v
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+source ~/.nvm/nvm.sh
+nvm --version
+nvm ls-remote
+nvm install 22.6.0 
+```
+---
+💾 4. Clonar el repositorio
+```bash
 git clone https://github.com/SINNOMBRE22/Bot-2.0
 
 cd Bot-2.0
 
-
+```
 ---
-
-⚡ 4. Instalar Node.js (método NVM recomendado)
-
-Actualizar Node.js
-
-apt install nodejs
-
-node -v  # Verificamos la versión actual
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-
-source ~/.nvm/nvm.sh
-
-nvm --version
-
-nvm ls-remote
-
-nvm install 22.6.0   # Versión recomendada
-
-
----
-
 📘 5. Instalar dependencias del bot
-
+```bash
 npm install
-
+```
 
 ---
 
 🚀 6. Iniciar el bot
-
+```bash
 node index.js
-
+```
 💡 O mantenerlo activo 24/7 con PM2
-
+```bash
 npm install -g pm2
-pm2 start index.js --name "Bot-2.0"
+pm2 start index.js --name "Bot"
 pm2 save
 pm2 startup
-
+```
 
 ---
 
 🔄 7. Actualizar el bot manualmente
-
+```bash
 git pull origin main
 npm install
 pm2 restart Bot-2.0
-
+```
 
 ---
 
 <div align="center">🧠 Créditos
 
 Desarrollado con ❤️ por SinNombre
-✨ Basado en la evolución del sistema Mystic, totalmente renovado.
-
-
-
-🌐 Visitar el proyecto en GitHub
-
+✨ Basado en la evolución del sistema.
 </div>
 ```
+xx
