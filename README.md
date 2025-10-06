@@ -7,7 +7,7 @@
 🌀 El sucesor evolucionado del legendario bot Mystic.  
 Potente, modular y 100% optimizado para VPS y ejecución continua.
 
-![banner](https://capsule-render.vercel.app/api?type=waving&color=0:3a0ca3,100:7209b7&height=120&section=header&text=BOT-2.0&fontColor=ffffff&fontSize=45&animation=twinkling)
+![banner](https://capsule-render.vercel.app/api?type=waving&color=0:3a0ca3,100:7209b7&height=120&section=header&text=Sun-JinWoo&fontColor=ffffff&fontSize=45&animation=twinkling)
 
 </div>
 
@@ -94,5 +94,3 @@ pm2 restart Bot-2.0
 Desarrollado con ❤️ por SinNombre
 ✨ Basado en la evolución del sistema.
 </div>
-```
-xx
