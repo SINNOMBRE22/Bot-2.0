@@ -38,10 +38,16 @@ sudo apt update && sudo apt upgrade -y
 ```bash
 sudo apt install -y git ffmpeg imagemagick webp curl
 ```
+🧰 3. Instalar librerías de compilación (recomendado)
 
+Estas librerías del sistema permiten que algunos módulos de Node.js (como canvas, sharp, o ffmpeg-static) se instalen y funcionen correctamente.
+
+```bash
+sudo apt install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config
+```
 ---
 
-⚡ 3. Instalar Node.js (método NVM recomendado)
+⚡ 4. Instalar Node.js (método NVM recomendado)
 
 Actualizar Node.js
 ```bash
@@ -54,7 +60,7 @@ nvm ls-remote
 nvm install 22.6.0 
 ```
 ---
-💾 4. Clonar el repositorio
+💾 5. Clonar el repositorio
 ```bash
 git clone https://github.com/SINNOMBRE22/Bot-2.0
 
