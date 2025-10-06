@@ -68,14 +68,14 @@ cd Bot-2.0
 
 ```
 ---
-📘 5. Instalar dependencias del bot
+📘 6. Instalar dependencias del bot
 ```bash
 npm install
 ```
 
 ---
 
-🚀 6. Iniciar el bot
+🚀 7. Iniciar el bot
 ```bash
 node index.js
 ```
@@ -89,7 +89,7 @@ pm2 startup
 
 ---
 
-🔄 7. Actualizar el bot manualmente
+🔄 8. Actualizar el bot manualmente
 ```bash
 git pull origin main
 npm install
@@ -97,7 +97,20 @@ pm2 restart Bot-2.0
 ```
 
 ---
+9. # 1. Instala dependencias del sistema necesarias para canvas
+```bash
+apt-get update
+apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+```
 
+# 2. Limpia e instala de nuevo canvas
+```bash
+npm rebuild canvas --build-from-source
+```
+# Si lo anterior no funciona:
+```bash
+npm install canvas --build-from-source
+```
 <div align="center">🧠 Créditos
 
 Desarrollado con ❤️ por SinNombre
