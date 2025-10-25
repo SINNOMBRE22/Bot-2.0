@@ -55,13 +55,13 @@ async function start(file) {
   if (isRunning) return;
   isRunning = true;
 
-  say('Sun Jim-Woo\nBot', {
+  say('The Mystic\nBot', {
     font: 'chrome',
     align: 'center',
     gradient: ['red', 'magenta'],
   });
 
-  say(`Bot creado por Cristian Aguilar (SinNombre)`, {
+  say(`Bot creado por Bruno Sobrino`, {
     font: 'console',
     align: 'center',
     gradient: ['red', 'magenta'],
@@ -81,18 +81,18 @@ async function start(file) {
   if (opcion === '2') {
     const phoneNumber = await question(chalk.yellowBright.bold('\n—◉ㅤEscriba su número de WhatsApp:\n') + chalk.white.bold('◉ㅤEjemplo: +5219992095479\n—> '));
     const numeroTelefono = formatearNumeroTelefono(phoneNumber);
-    
+
     if (!esNumeroValido(numeroTelefono)) {
       console.log(chalk.bgRed(chalk.white.bold('[ ERROR ] Número inválido. Asegúrese de haber escrito su numero en formato internacional y haber comenzado con el código de país.\n—◉ㅤEjemplo:\n◉ +5219992095479\n')));
       process.exit(0);
     }
-    
+
     process.argv.push('--phone=' + numeroTelefono);
     process.argv.push('--method=code');
   } else if (opcion === '1') {
     process.argv.push('--method=qr');
   }
-  
+
   const args = [join(__dirname, file), ...process.argv.slice(2)];
   setupMaster({ exec: args[0], args: args.slice(1) });
   forkProcess(file);
@@ -121,7 +121,7 @@ function forkProcess(file) {
     console.log(chalk.yellow.bold(`—◉ㅤProceso secundario terminado (${code || signal})`));
     isRunning = false;
     childProcess = null;
-    
+
     if (code !== 0 || signal === 'SIGTERM') {
       console.log(chalk.yellow.bold('—◉ㅤReiniciando proceso...'));
       setTimeout(() => start(file), 1000);
