@@ -1,5 +1,5 @@
 {
-  "name": "Sung Jin-Woo",
+  "name": "TheMystic-Bot-MD",
   "version": "1.0.0",
   "description": "Un chatbot automatizado para WhatsApp basado en Node.js, que permite realizar múltiples funciones y personalizaciones en la plataforma.",
   "main": "index.js",
@@ -16,16 +16,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/SINNOMBRE22/bot2.0",
+  "homepage": "https://github.com/BrunoSobrino/TheMystic-Bot-MD",
   "author": {
-    "name": "SINNOMBRE22"
+    "name": "BrunoSobrino"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SINNOMBRE22/bot2.0.git"
+    "url": "git+https://github.com/BrunoSobrino/TheMystic-Bot-MD.git"
   },
   "bugs": {
-    "url": "https://github.com/SINNOMBRE22/bot2.0/issues"
+    "url": "https://github.com/BrunoSobrino/TheMystic-Bot-MD/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
@@ -41,10 +41,9 @@
     "awesome-phonenumber": "^2.68.0",
     "axios": "*",
     "axios-cookiejar-support": "*",
-    "baileys": "npm:theshadowbails",
+    "baileys": "github:BrunoSobrino/Baileys-Itsukichann",
     "body-parser": "^1.20.2",
     "browser-id3-writer": "*",
-    "canvas": "^2.11.2",
     "cfonts": "^2.10.0",
     "chalk": "^4.1.2",
     "chart.js": "4.4.2",
@@ -59,6 +58,7 @@
     "fluid-spotify.js": "*",
     "formdata-node": "^4.3.2",
     "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.2",
     "google-it": "^1.6.3",
     "google-libphonenumber": "3.2.38",
     "google-play-scraper": "^10.0.0",
@@ -81,7 +81,6 @@
     "node-id3": "^0.2.6",
     "node-shazam": "*",
     "node-webpmux": "^3.1.1",
-    "pdf-lib": "^1.17.1",
     "pdfkit": "^0.13.0",
     "perf_hooks": "^0.0.1",
     "pino": "^7.8.0",
@@ -97,15 +96,14 @@
     "syntax-error": "^1.4.0",
     "terminal-image": "^2.0.0",
     "url-regex-safe": "^3.0.0",
+    "wa-sticker-formatter": "^4.4.4",
     "yargs": "^17.3.1",
     "yt-search": "^2.10.3"
   },
   "optionalDependencies": {
-    "puppeteer": "*",
-    "wa-sticker-formatter": "^4.3.2"
+    "puppeteer": "*"
   },
   "devDependencies": {
-    "eslint": "^8.45.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint": "^9.37.0"
   }
 }

@@ -49,5 +49,3 @@ export default async (buffer) => {
  const result = origin + '/file' + fileId;
  return result;
 }*/
-
-

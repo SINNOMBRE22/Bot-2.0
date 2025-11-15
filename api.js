@@ -16,7 +16,7 @@ global.openai_org_id = 'org-3';
 /* Obtén tu ID de organización en este enlace: https://platform.openai.com/account/org-settings */
 
 global.MyApiRestBaseUrl = 'https://api.cafirexos.com'; // Bloqueo de IP -> usar esta para no ser bloqueado: 'https://api-brunosobrino.onrender.com';
-global.MyApiRestApikey = 'SINNOMBRE22';
+global.MyApiRestApikey = 'BrunoSobrino';
 
 global.MyApiRestBaseUrl2 = 'https://api-brunosobrino-dcaf9040.koyeb.app';
 
@@ -28,7 +28,7 @@ global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c7
 global.keysxteam = keysxteammm[Math.floor(keysxteammm.length * Math.random())];
 global.keysneoxrrr = ['5VC9rvNx', 'cfALv5'];
 global.keysneoxr = keysneoxrrr[Math.floor(keysneoxrrr.length * Math.random())];
-global.lolkeysapi = ['GataDiosV3']; // ['SINNOMBRE22_2']
+global.lolkeysapi = ['GataDiosV3']; // ['BrunoSobrino_2']
 global.itsrose = ['4b146102c4d500809da9d1ff'];
 
 global.APIs = {
@@ -55,7 +55,7 @@ global.APIs = {
 },
 global.APIKeys = {
   'https://api.xteam.xyz': `${keysxteam}`,
-  'https://api.stellarwa.xyz': `SunJimWoo`,
+  'https://api.stellarwa.xyz': `BrunoSobrino`,
   'https://api.lolhuman.xyz': 'GataDios',
   'https://api.neoxr.my.id': `${keysneoxr}`,
   'https://api.zahwazein.xyz': `${keysxxx}`,
@@ -148,7 +148,7 @@ global.rpg = {
       kambing: '🐐 Cabra',
       kerbau: '🐃 Búfalo',
       lion: '🦁 León',
-      money: '👾 SunJimWooCoins',
+      money: '👾 MysticCoins',
       monyet: '🐒 Mono',
       panda: '🐼 Panda',
       snake: '🐍 Serpiente',
@@ -272,7 +272,7 @@ global.rpgshop = { // Tienda
       berlian: '♦️ Joya',
       kyubi: '🌀 Magia',
       gold: '👑 Oro',
-      money: '👾 SunJimWooCoins',
+      money: '👾 MysticCoins',
       tiketcoin: '🎫 mystic Tickers',
       stamina: '✨ Energía',
       potion: '🥤 Poción',
