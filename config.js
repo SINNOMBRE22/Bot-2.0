@@ -17,7 +17,7 @@ global.defaultLenguaje = 'es';
 
 global.owner = [
   ['5215629885039', '👑 Propietario 👑', true],
-  ['5217971532324']
+  ['5215629885039']
 ];
 
 global.suittag = ['5215629885039'];
@@ -28,7 +28,7 @@ global.BASE_API_DELIRIUS = "https://delirius-apiofc.vercel.app";
 
 global.packname = 'Sticker';
 global.author = 'SINNOMBRE22';
-global.wm = 'The Sun Jim-Woo - Bot';
+global.wm = 'Sun Jim-Woo - Bot';
 global.titulowm = 'Sun Jim-Woo Bot';
 global.titulowm2 = `Sun Jim-Woo Bot`
 global.igfg = 'Sun Jim-Woo';
@@ -52,7 +52,7 @@ global.año = d.toLocaleDateString('es', {year: 'numeric'});
 global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
 global.wm2 = `${dia} ${fecha}\nThe Sun Jim-Woo - Bot`;
-global.gt = 'The Sun Jim-Woo - Bot';
+global.gt = 'Sun Jim-Woo - Bot';
 global.mysticbot = 'The Sun Jim-Woo - Bot';
 global.channel = 'https://whatsapp.com/channel/0029Vaein6eInlqIsCXpDs3y';
 global.md = 'https://github.com/SINNOMBRE22/bot2.0';

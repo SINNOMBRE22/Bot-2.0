@@ -221,8 +221,6 @@ const support = {
   find: false
 }
 
-global.support = support
-
 export {
   sticker,
   sticker2,

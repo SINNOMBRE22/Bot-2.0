@@ -1,5 +1,5 @@
 {
-  "name": "TheMystic-Bot-MD",
+  "name": "Sung-Jim-Woo",
   "version": "1.0.0",
   "description": "Un chatbot automatizado para WhatsApp basado en Node.js, que permite realizar múltiples funciones y personalizaciones en la plataforma.",
   "main": "index.js",
@@ -16,16 +16,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/BrunoSobrino/TheMystic-Bot-MD",
+  "homepage": "https://github.com/BrunoSobrino/Sung-Jim-Woo",
   "author": {
     "name": "BrunoSobrino"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrunoSobrino/TheMystic-Bot-MD.git"
+    "url": "git+https://github.com/BrunoSobrino/Sung-Jim-Woo.git"
   },
   "bugs": {
-    "url": "https://github.com/BrunoSobrino/TheMystic-Bot-MD/issues"
+    "url": "https://github.com/BrunoSobrino/Sung-Jim-Woo/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
@@ -53,6 +53,7 @@
     "d3-node": "^3.0.0",
     "esm": "^3.2.25",
     "express": "^4.17.3",
+    "ffmpeg": "^0.0.4",
     "file-type": "^17.1.1",
     "fluent-ffmpeg": "^2.1.2",
     "fluid-spotify.js": "*",

@@ -1,4 +1,4 @@
-// Plugin para test de comandos - powered by @SINNOMBRE22
+// Plugin para test de comandos - by @SINNOMBRE22
 // Si vas a robar deja creditos o doname >:v
 import yts from 'yt-search';
 import fetch from 'node-fetch';
@@ -280,9 +280,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 };
 
-handler.help = ['test <query>', 'test2 <query>'];
+handler.help = ['play (audio)', 'play2 (video)'];
 handler.tags = ['downloader'];
-handler.command = /^(test|test2|play|play2|ytmp3|ytmp4)$/i;
+handler.command = /^(play|play2)$/i;
 export default handler;
 
 const yt = {

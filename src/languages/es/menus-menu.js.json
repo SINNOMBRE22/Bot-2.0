@@ -6,7 +6,7 @@
             "user_info": "┏━━━━━━━━━━━━━━━━┓\n┃ *< INFO DEL USUARIO />*\n┃≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡┃\n┣ ✯ *Nivel:* @level\n┣ ✯ *Experiencia:* @exp\n┣ ✯ *Rango:* @role\n┣ ✯ *Diamantes:* @limit\n┣ ✯ *SunJimWooCoins:* @money\n┣ ✯ *Tokens:* @joincount\n┣ ✯ *Premium:* @premium\n┗━━━━━━━━━━━━━━━━┛\n",
             
             "section_header": "┏━━━━━━━━━━━━━━━━┓\n┃ @category\n┃≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡┃",
-            "command_item": "┣  □ @cmd @islimit",
+            "command_item": " @cmd @islimit",
             "section_footer": "┗━━━━━━━━━━━━━━━━┛\n",
             
             "error_message": "[ ❌ ] Ocurrió un error al generar el menú:",
